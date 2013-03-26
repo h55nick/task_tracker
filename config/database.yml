@@ -5,3 +5,13 @@ development:
   pool: 5
   username: nblanchet
   password:
+
+
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: todo_development
+  pool: 5
+  username: nblanchet
+  password:
