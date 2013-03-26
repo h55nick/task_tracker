@@ -1,0 +1,25 @@
+<div id="map">
+<div id="map_canvas"></div>
+</div>
+%script
+  display_map(40.7316, -73.9901, 10);
+%br
+%br
+.row
+  %table.columns.twelve
+    %tr#editform
+      =form_tag do
+        %td#edithidden= hidden_field_tag('task_id')+"Done"
+        %td=text_field_tag 'title', nil, :placeholder=>"Task",:autofocus=>true
+        %td=text_field_tag 'description', nil,:placeholder=>"Description"
+        %td=text_field_tag 'duedate',  nil,:placeholder=>"Due Date",:id=>"datepicker"
+        %td=text_field_tag 'address',  nil,:placeholder=>"Location"
+        %td=select_tag 'priority_id', options_from_collection_for_select(@auth.priorities.order(:value),"id","name")
+        %td
+          =submit_tag 'Add', :id => 'create_task', :class => 'button success small'
+          =link_to('Edit', nil, :id => 'edit_task', :class => 'button alert small hide inline',:href=>'#')
+          =link_to('Cancel',nil, :id => 'cancel_edit', :class => 'button alert small hide',:href=>'#')
+        %script get_all();
+.row
+  .columns.five.centered.tcenter
+    =link_to("Clear Completed",nil, :class => 'button alert',:id=>"clear_completed",:href=>'#')

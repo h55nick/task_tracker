@@ -1,0 +1,24 @@
+<div class='row'>
+  <div class='tweleve columns'>
+    <ul class="nav-bar">
+      <% if @auth.present? %>
+      <li><%= link_to('Home', root_path) %></li>
+      <li> <%=link_to("Logout", login_path, :method => :delete)%></li>
+      <li><%= link_to('Priorities', priorities_path) if @auth.present?%></li>
+      <li> <%=link_to("Tasks", tasks_path)%></li>
+      <%else%>
+     <% if request.env['PATH_INFO'] != '/' %>
+      <li><%= link_to('Home', root_path) %></li>
+      <%end%>
+      <li><%= link_to('Login', login_path) if !@auth.present?%></li>
+      <li><%= link_to('Create Account', new_user_path) if !@auth.present?%></li>
+      <%end%>
+    </ul>
+    <h2>
+  <%= @auth.name if @auth.present?%>
+</h2>
+<br/>
+  </div>
+
+</div>
+

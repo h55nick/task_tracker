@@ -1,0 +1,9 @@
+A Rails App.
+
+Skills working on:
+ AJAX
+ Database Queries
+ Model Formation
+ Geo-Caching
+ Google Map API
+ Authorization
